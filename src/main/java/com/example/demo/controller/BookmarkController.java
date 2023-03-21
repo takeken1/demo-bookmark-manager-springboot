@@ -17,6 +17,7 @@ public class BookmarkController {
     BookmarkService bookmarkService;
 
     @GetMapping("")
+    @CrossOrigin(origins = "*", methods = {RequestMethod.GET})
     public ResponseEntity<List<Bookmark>> getAllBookmarks() {
         List<Bookmark> bookmarks = bookmarkService.getAllBookmarks();
         return new ResponseEntity<>(bookmarks, HttpStatus.OK);
