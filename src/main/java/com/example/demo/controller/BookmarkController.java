@@ -17,7 +17,7 @@ public class BookmarkController {
     BookmarkService bookmarkService;
 
     @GetMapping("")
-    @CrossOrigin(origins = "*", methods = {RequestMethod.GET})
+    @CrossOrigin(origins = "*", methods = { RequestMethod.GET })
     public ResponseEntity<List<Bookmark>> getAllBookmarks() {
         List<Bookmark> bookmarks = bookmarkService.getAllBookmarks();
         return new ResponseEntity<>(bookmarks, HttpStatus.OK);
@@ -31,7 +31,8 @@ public class BookmarkController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Bookmark> updateBookmark(@PathVariable Long id, @RequestBody Bookmark newBookmark) {
-        Bookmark updatedBookmark = bookmarkService.updateBookmark(id, newBookmark.getUrl(), newBookmark.getTitle(), newBookmark.getDescription());
+        Bookmark updatedBookmark = bookmarkService.updateBookmark(id, newBookmark.getUrl(), newBookmark.getTitle(),
+                newBookmark.getDescription());
         if (updatedBookmark == null) {
             return ResponseEntity.notFound().build();
         }
