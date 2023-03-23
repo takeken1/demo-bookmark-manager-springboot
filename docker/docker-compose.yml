@@ -3,6 +3,8 @@ version: '3'
 services:
   mysql:
     image: mysql:8.0
+    volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d # 初期化SQLのファイルをマウント
     environment:
       MYSQL_DATABASE: bookmarkdb
       MYSQL_USER: bookmark
