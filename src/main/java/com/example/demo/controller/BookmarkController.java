@@ -23,13 +23,13 @@ public class BookmarkController {
         return new ResponseEntity<>(bookmarks, HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping("/add")
     public ResponseEntity<Void> addBookmark(@RequestBody Bookmark bookmark) {
         bookmarkService.addBookmark(bookmark);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Bookmark> updateBookmark(@PathVariable Long id, @RequestBody Bookmark newBookmark) {
         Bookmark updatedBookmark = bookmarkService.updateBookmark(id, newBookmark.getUrl(), newBookmark.getTitle(), newBookmark.getDescription());
         if (updatedBookmark == null) {
@@ -38,7 +38,7 @@ public class BookmarkController {
         return ResponseEntity.ok(updatedBookmark);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteBookmark(@PathVariable("id") Long id) {
         bookmarkService.deleteBookmark(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

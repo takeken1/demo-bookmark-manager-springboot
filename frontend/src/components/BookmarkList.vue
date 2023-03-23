@@ -23,6 +23,7 @@
         </tr>
       </tbody>
     </table>
+    <button @click="goToAddBookmark">ブックマークを追加する</button>
   </div>
 </template>
 
@@ -37,7 +38,7 @@ export default {
   },
   methods: {
     fetchBookmarks() {
-      axios.get('http://localhost:8080/bookmarks')
+      axios.get('/bookmarks')
         .then((response) => {
           this.bookmarks = response.data;
         })
@@ -50,7 +51,7 @@ export default {
       this.$router.push({ name: 'edit', params: { id } });
     },
     deleteBookmark(id) {
-      axios.delete(`http://localhost:8080/bookmarks/${id}`)
+      axios.delete(`/bookmarks/${id}`)
         .then(() => {
           this.fetchBookmarks();
         })
@@ -58,6 +59,9 @@ export default {
           console.error(error);
         });
     },
+    goToAddBookmark() {
+      this.$router.push({ name: "AddBookmark" });
+    },    
   },
   mounted() {
     this.fetchBookmarks();
