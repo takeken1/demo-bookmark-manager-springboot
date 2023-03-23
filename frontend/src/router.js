@@ -6,18 +6,18 @@ const routes = [
   {
     path: "/",
     name: "BookmarkList",
-    component: BookmarkList
+    component: BookmarkList,
   },
   {
     path: "/add-bookmark",
     name: "AddBookmark",
-    component: AddBookmark
-  }
+    component: AddBookmark,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
 export default router;

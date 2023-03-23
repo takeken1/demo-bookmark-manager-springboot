@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     fetchBookmarks() {
-      axios.get('/bookmarks')
+      axios
+        .get("/bookmarks")
         .then((response) => {
           this.bookmarks = response.data;
         })
@@ -48,10 +49,11 @@ export default {
     },
     editBookmark(id) {
       // 編集画面へ遷移する処理を実装する
-      this.$router.push({ name: 'edit', params: { id } });
+      this.$router.push({ name: "edit", params: { id } });
     },
     deleteBookmark(id) {
-      axios.delete(`/bookmarks/${id}`)
+      axios
+        .delete(`/bookmarks/${id}`)
         .then(() => {
           this.fetchBookmarks();
         })
@@ -61,7 +63,7 @@ export default {
     },
     goToAddBookmark() {
       this.$router.push({ name: "AddBookmark" });
-    },    
+    },
   },
   mounted() {
     this.fetchBookmarks();
